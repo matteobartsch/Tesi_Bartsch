@@ -2,7 +2,7 @@
 
 Clone this repository by running:
 ```
-git clone --recurse-submodules git@github.com:mattiamurachelli/fdaPDE-pacs25.git
+git clone --recurse-submodules git@github.com:matteobartsch/Tesi_Bartsch.git
 ```
 
 Pull the latest change to the docker image:
