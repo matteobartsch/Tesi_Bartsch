@@ -1,1 +1,9 @@
-.bash_history
+*
+
+!*.cpp
+!*.h
+!*.R
+!*.mtx
+!*.txt
+!*.csv
+!*/
