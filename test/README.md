@@ -18,7 +18,7 @@ docker pull aldoclemente/fdapde-docker:latest
 #### 3. **Navigate to the test directory inside the container**
 
 ```
-cd ~/fdaPDE-testing/test
+cd 
 ```
 
 #### 4. **Compile and run a C++ script**
