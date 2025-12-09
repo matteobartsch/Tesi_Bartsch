@@ -23,6 +23,8 @@ int main(int argc, char *argv[]){
     vector_t errors_L2 = vector_t::Zero(N_NODES.size());
     vector_t errors_N = vector_t::Zero(N_NODES.size());
     
+    std::mt19937 gen(12345);
+    // !!!
     for( int n=0; n<N_NODES.size(); ++n){
     std::cout << "---- N = " << N_NODES[n] << " ----" << std::endl;
     Triangulation<2, 2> unit_square = Triangulation<2, 2>::UnitSquare(N_NODES[n], cache_cells);
@@ -69,8 +71,6 @@ int main(int argc, char *argv[]){
         response[i] = exact(locs.row(i));  // no noise
     } 
     
-    std::mt19937 gen(12345);
-    // !!!
     response += noise(n_locs, 1, 0.05, gen); // with noise, sigma = 0.05
 
     GeoFrame data(unit_square);
@@ -105,9 +105,11 @@ int main(int argc, char *argv[]){
     std::cout << "\nL2 rates: " << rates_L2.transpose() << std::endl;
     std::cout << "N rates: " << rates_N.transpose() << std::endl;
     // change output folder permissions
+    
+    // Eigen::saveMarket(grid, output_dir + "rates_L2.mtx");
+    eigen2txt<double>(rates_L2, output_dir + "rates_L2.txt");
+    
     command_str = "chown -R 1000:1000 " + output_dir;
     system(command_str.c_str());
-
-
     return 0;
 }
